@@ -110,8 +110,12 @@ fsPackTypes_t fs_packtypes[] = {
 };
 
 char datadir[MAX_OSPATH];
+char addondir[MAX_OSPATH];
 char fs_gamedir[MAX_OSPATH];
 qboolean file_from_protected_pak;
+qboolean disable_Cinematic;
+qboolean borderless;
+
 
 cvar_t *fs_basedir;
 cvar_t *fs_cddir;
@@ -1973,6 +1977,10 @@ void FS_BuildRawPath(void) {
 	// a data dir he expects it in a working state.
 	FS_AddDirToRawPath(datadir, false, true);
 
+	// Add data dir. Required, when the user gives us
+	// a data dir he expects it in a working state.
+	FS_AddDirToRawPath(addondir, false, true);
+
 	// Add SYSTEMDIR. Optional, the user may have a
 	// binary compiled with SYSTEMWIDE (installed from
 	// packages), but no systemwide game data.
@@ -2015,6 +2023,11 @@ FS_InitFilesystem(void)
 	else if (strlen(datadir) == 0)
 	{
 		strcpy(datadir, ".");
+	}
+
+	else if (strlen(addondir) == 0)
+	{
+		strcpy(addondir, ".");
 	}
 
 #ifdef _WIN32

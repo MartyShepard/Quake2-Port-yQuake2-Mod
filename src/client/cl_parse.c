@@ -875,8 +875,8 @@ CL_ParseServerData(void)
 
 	if (cl.playernum == -1)
 	{
-		/* playing a cinematic or showing a pic, not a level */
-		SCR_PlayCinematic(str);
+		/* playing a cinematic or showing a pic, not a level */		
+			SCR_PlayCinematic(str);		
 	}
 	else
 	{

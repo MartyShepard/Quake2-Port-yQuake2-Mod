@@ -666,36 +666,40 @@ SCR_PlayCinematic(char *arg)
 		return;
 	}
 
-	Com_sprintf(name, sizeof(name), "video/%s", arg);
-	FS_FOpenFile(name, &cl.cinematic_file, false);
+	
+	
+		Com_sprintf(name, sizeof(name), "video/%s", arg);
+		FS_FOpenFile(name, &cl.cinematic_file, false);
 
-	if (!cl.cinematic_file)
-	{
-		SCR_FinishCinematic();
-		cl.cinematictime = 0; /* done */
-		return;
-	}
+		// Modified: Cinematic Videos über die Commandline deaktivieren
+		if (!cl.cinematic_file || disable_Cinematic )
+		{
+			SCR_FinishCinematic();
+			cl.cinematictime = 0; /* done */
+			return;
+		}
 
-	SCR_EndLoadingPlaque();
+		SCR_EndLoadingPlaque();
 
-	cls.state = ca_active;
+		cls.state = ca_active;
 
-	FS_Read(&width, 4, cl.cinematic_file);
-	FS_Read(&height, 4, cl.cinematic_file);
-	cin.width = LittleLong(width);
-	cin.height = LittleLong(height);
+		FS_Read(&width, 4, cl.cinematic_file);
+		FS_Read(&height, 4, cl.cinematic_file);
+		cin.width = LittleLong(width);
+		cin.height = LittleLong(height);
 
-	FS_Read(&cin.s_rate, 4, cl.cinematic_file);
-	cin.s_rate = LittleLong(cin.s_rate);
-	FS_Read(&cin.s_width, 4, cl.cinematic_file);
-	cin.s_width = LittleLong(cin.s_width);
-	FS_Read(&cin.s_channels, 4, cl.cinematic_file);
-	cin.s_channels = LittleLong(cin.s_channels);
+		FS_Read(&cin.s_rate, 4, cl.cinematic_file);
+		cin.s_rate = LittleLong(cin.s_rate);
+		FS_Read(&cin.s_width, 4, cl.cinematic_file);
+		cin.s_width = LittleLong(cin.s_width);
+		FS_Read(&cin.s_channels, 4, cl.cinematic_file);
+		cin.s_channels = LittleLong(cin.s_channels);
 
-	Huff1TableInit();
+		Huff1TableInit();
 
-	cl.cinematicframe = 0;
-	cin.pic = SCR_ReadNextFrame();
-	cl.cinematictime = Sys_Milliseconds();
+		cl.cinematicframe = 0;
+		cin.pic = SCR_ReadNextFrame();
+		cl.cinematictime = Sys_Milliseconds();
+	
 }
 

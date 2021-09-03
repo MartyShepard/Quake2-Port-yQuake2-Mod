@@ -57,6 +57,13 @@ main(int argc, char **argv)
 			is_portable = true;
 		}
 
+		// Play Cineamtic?
+		// Modified: Cinematic Videos über die Commandline deaktivieren
+		if (strcmp(argv[i], "-nocinema") == 0)
+		{
+			disable_Cinematic = true;
+		}
+
 		// Inject a custom data dir.
 		if (strcmp(argv[i], "-datadir") == 0)
 		{
@@ -92,6 +99,43 @@ main(int argc, char **argv)
 				return 1;
 			}
 		}
+
+		// Inject a custom data dir.
+		// Weiteres Verzeichnis als Suchpfad Hinzufügen
+		if (strcmp(argv[i], "-addondir") == 0)
+		{
+			// Mkay, did the user give us an argument?
+			if (i != (argc - 1))
+			{
+				DWORD attrib;
+				WCHAR wpath[MAX_OSPATH];
+
+				MultiByteToWideChar(CP_UTF8, 0, argv[i + 1], -1, wpath, MAX_OSPATH);
+				attrib = GetFileAttributesW(wpath);
+
+				if (attrib != INVALID_FILE_ATTRIBUTES)
+				{
+					if (!(attrib & FILE_ATTRIBUTE_DIRECTORY))
+					{
+						printf("-addondir %s is not a directory\n", argv[i + 1]);
+						return 1;
+					}
+
+					Q_strlcpy(addondir, argv[i + 1], MAX_OSPATH);
+				}
+				else
+				{
+					printf("-addondir %s could not be found\n", argv[i + 1]);
+					return 1;
+				}
+			}
+			else
+			{
+				printf("-addondir needs an argument\n");
+				return 1;
+			}
+		}
+
 
 		// Inject a custom config dir.
 		if (strcmp(argv[i], "-cfgdir") == 0)

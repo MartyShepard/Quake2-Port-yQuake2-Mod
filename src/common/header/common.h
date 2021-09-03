@@ -752,9 +752,11 @@ extern cvar_t *sv_entfile;
 
 /* Hack for portable client */
 extern qboolean is_portable;
+extern qboolean disable_Cinematic;
 
 /* Hack for external datadir */
 extern char datadir[MAX_OSPATH];
+extern char addondir[MAX_OSPATH];
 
 /* Hack for external datadir */
 extern char cfgdir[MAX_OSPATH];

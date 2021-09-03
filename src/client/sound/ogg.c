@@ -181,6 +181,7 @@ OGG_InitTrackList(void)
 
 			// the simple case (like before: $mod/music/02.ogg - 11.ogg or whatever)
 			snprintf(testFileName, MAX_OSPATH, "%s02.ogg", fullMusicPath);
+			Com_Printf("Search Ogg Vorbis Music Tracks (Numbering 02 to 11) in:\n => %s \n", fullMusicPath);
 
 			if(Sys_IsFile(testFileName))
 			{
@@ -201,8 +202,8 @@ OGG_InitTrackList(void)
 			}
 
 			// the GOG case: music/Track02.ogg to Track21.ogg
-			snprintf(testFileName, MAX_OSPATH, "%sTrack%02i.ogg",
-				fullMusicPath, getMappedGOGtrack(8, gameType));
+			snprintf(testFileName, MAX_OSPATH, "%sTrack%02i.ogg",fullMusicPath, getMappedGOGtrack(8, gameType));
+			Com_Printf("Search Ogg Vorbis Music Tracks (GOG Names) in:\n => %s \n", fullMusicPath);
 
 			if(Sys_IsFile(testFileName))
 			{
