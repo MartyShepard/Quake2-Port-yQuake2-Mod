@@ -25,13 +25,16 @@ homepage: https://www.yamagi.org/quake2
 **Unsupported** preview builds for Windows can be found at
 https://deponie.yamagi.org/quake2/misc/
 
-( Modified for personal and private use )
+
+
+
+## ( Modified for personal and private use )
 
 Added Switches
-## -nocinema 
+# -nocinema 
 Deactivates the playing of the videos for mods or maps. According to which you do not need videos despite the fact that they are in the main directory of Quake 2 but are important for the Q2 main game. 
 
-## -addondir
+# -addondir
 AddonDir can be used in combination with datadir. For example, I have the Quake2 main directory in
 (1) "B:\Directory\Directory\[ Quake 2 Base ]\"
 The mod or map is under
