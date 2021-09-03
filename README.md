@@ -13,6 +13,8 @@ This code is built upon Icculus Quake II, which itself is based on Quake II
 3.21. Yamagi Quake II is released under the terms of the GPL version 2. See the
 LICENSE file for further information.
 
+Original Yamagi Quake : https://github.com/yquake2/yquake2
+
 ## Documentation
 
 Before asking any question, read through the documentation! The current
@@ -28,7 +30,7 @@ https://deponie.yamagi.org/quake2/misc/
 
 
 
-## ( Modified for personal and private use )
+## ( Modified for personal and private use. Unofficlal Build )
 
 Added Switches
 # -nocinema 
