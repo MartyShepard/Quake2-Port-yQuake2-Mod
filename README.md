@@ -42,3 +42,5 @@ The mod or map is under
 -datadir points to (1)
 -addondir points to (2) + set game "game directory"
 I'm still using kmQuake2 and both ports point to same base directory. Stay organized and save space.
+
+Compile: MingW
