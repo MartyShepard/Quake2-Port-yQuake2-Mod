@@ -30,7 +30,7 @@ https://deponie.yamagi.org/quake2/misc/
 
 
 
-## ( Modified for personal and private use. Unofficlal Build )
+## ( Modified for personal and private use. Unofficial Build )
 
 Added Switches
 # -nocinema 
